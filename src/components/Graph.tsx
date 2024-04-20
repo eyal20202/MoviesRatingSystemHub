@@ -4,21 +4,12 @@ import { Movie, VoteData } from '../types';
 import { ChartOptions, ChartData,Chart as ChartJS,registerables  } from 'chart.js';
 import 'chartjs-adapter-moment';
 import { Typography, Box } from '@mui/material';
-import { makeStyles } from '@mui/styles';
 interface GraphProps {
   selectedMovie: Movie | null;
   voteData: VoteData[];
 }
 
-const useStyles = makeStyles({
-  title: {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    marginBottom: '1rem',
-  },
-});
 const Graph: React.FC<GraphProps> = ({ selectedMovie, voteData }) => {
-    const classes = useStyles();
     const chartRef = useRef<ChartJS<'line', { x: Date; y: number }[], unknown> | null>(null);
     useEffect(()=>{
         ChartJS.register(
@@ -76,13 +67,13 @@ const Graph: React.FC<GraphProps> = ({ selectedMovie, voteData }) => {
     <Box>
       {selectedMovie ? (
         <Box textAlign="center">
-          <Typography gutterBottom align="center" variant="h4" className={classes.title}>
+          <Typography gutterBottom align="center" variant="h4" sx={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
             Votes for {selectedMovie.description}
           </Typography>
           <Line data={data} options={options} ref={chartRef} />
         </Box>
       ) : (
-        <Typography gutterBottom align="center" variant="h4" className={classes.title}>
+        <Typography gutterBottom align="center" variant="h4" sx={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
           Select a movie to view the graph
         </Typography>
       )}

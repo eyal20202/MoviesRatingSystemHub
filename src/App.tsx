@@ -7,16 +7,9 @@ import { loginApi, getMoviesApi } from './components/api';
 import { Movie, VoteData } from './types';
 import * as signalR from '@microsoft/signalr';
 import { Container, Grid  } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
-const useStyles = makeStyles((theme: any) => ({
-  root: {
-    flexGrow: 1,
-    paddingTop: useTheme().spacing(4),
-  },
-}));
+
 const App: React.FC = () => {
-  const classes = useStyles();
+
   const [connectionStatus, setConnectionStatus] = useState<boolean>(false);
   const [lastDataTime, setLastDataTime] = useState<string>('');
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -57,7 +50,7 @@ const App: React.FC = () => {
     setSelectedMovie(movie);
   };
   return (
-    <div className={classes.root}>
+    <div >
       <Container maxWidth="lg">
         <Header connectionStatus={connectionStatus} lastDataTime={lastDataTime} />
         <Grid container spacing={4}>
