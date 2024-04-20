@@ -1,4 +1,4 @@
-1.Download the zip
+1. Download the zip
 2. extract
 3. in the file run npm install --force
 4. npm start
